@@ -19,7 +19,7 @@ DoutekiDNS is an incredibly simple, and cheap Dynamic DNS service API built on A
 + AWS account
 
 ####Running directions (simple)
-+You must have the heroku toolbelt installed. 
++ You must have the heroku toolbelt installed. 
 ```
 ./install.sh "AWS Access Key" "AWS Secret Key" "AWS Host" "Toplevel domain ex: example.com"
 ```
