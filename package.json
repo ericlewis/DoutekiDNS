@@ -1,0 +1,13 @@
+{
+  "name": "dyndns-api",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "2.5.x",
+	"mongoose": "*",
+	"awssum": "*"
+  },
+  "engines": {
+    "node": "0.8.4",
+    "npm": "1.1.*"
+  }
+}
