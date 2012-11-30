@@ -14,7 +14,6 @@ process.argv.forEach(function (val, index, array) {
   }else if(index == 2 && val.replace('--', '') == 'update'){
       api_url = array[3];
       setTimeout(attemptUpdate, 5000, array[4], array[5]);
-	  //attemptUpdate(array[4], array[5]);
   }else if(index == 2 && val.replace('--', '') != 'update' || index == 2 && val.replace('--', '') != 'register'){
   	  console.error('invalid action, available actions: update, register.');
 	  return false;
