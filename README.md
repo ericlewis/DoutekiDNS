@@ -1,5 +1,5 @@
 # DoutekiDNS
-DoutekiDNS is an incredibly simple, and cheap Dynamic DNS service API built on AWS Route 53, Heroku, and MongoHQ. Designed to be started with one line, to run within heroku and MongoHQ's free tier, and to cost only a couple dollars a month with amazon's Route53 service. It utilizes a super simple REST interface, and outputs JSON for easy consumption across a bunch of platforms and languages. We are in the beginning still, pull requests are more than welcome!
+DoutekiDNS is an incredibly simple, and cheap Dynamic DNS service API built on AWS Route 53, Heroku, and MongoHQ. Designed to be started with one line, to run within heroku and MongoHQ's free tier, and to cost only a couple dollars a month with amazon's Route53 service. It utilizes a super simple REST interface, and outputs JSON for easy consumption across a bunch of platforms and languages. We are in the beginning still, pull requests are more than welcome! Enjoy :)
 
 ## Examples
 + register domain: /api/v1/register/:username/:password
