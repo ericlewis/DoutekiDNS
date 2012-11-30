@@ -15,7 +15,7 @@ var r53 = new Route53({
 console.log(process.env);
 
 var hostedZoneId = process.env.AWS_HOSTZONEID;
-var masterDomain = process.env.AWS_HOSTEDDOMAIN;
+var masterDomain = process.env.AWS_HOSTDOMAIN;
 
 // get a users ip address
 function getClientIp(req) {
