@@ -165,11 +165,15 @@ exports.checkUser = function(req, res) {
 		if(!err){
 			if(result){
 				if(result.domains.length > 0 && req.password == result.password){
-					return true;
+					next();
+				}else{
+					res.send(403);
 				}
+			}else{
+				res.send(403);
 			}
-		}
-		
-		return res.send(403);
+		}else{
+			res.send(403);
+		}		
 	});
 };
