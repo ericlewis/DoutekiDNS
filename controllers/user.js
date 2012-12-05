@@ -12,8 +12,6 @@ var r53 = new Route53({
   'region'          : amazon.US_EAST_1
 });
 
-console.log(process.env);
-
 var hostedZoneId = process.env.AWS_HOSTZONEID;
 var masterDomain = process.env.AWS_HOSTDOMAIN;
 
