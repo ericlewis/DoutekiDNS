@@ -167,13 +167,13 @@ exports.checkUser = function(req, res, next) {
 				if(result.domains.length > 0 && req.password == result.password){
 					next();
 				}else{
-					res.send(403);
+					res.send({success: false, message: "Unauthorized"}, 403);
 				}
 			}else{
-				res.send(403);
+				res.send({success: false, message: "Unauthorized"}, 403);
 			}
 		}else{
-			res.send(403);
+			res.send({success: false, message: "Unauthorized"}, 403);
 		}		
 	});
 };
