@@ -161,15 +161,15 @@ exports.update = function(req, res) {
 
 
 exports.checkUser = function(req, res) { 
-	User.findOne({ username: req.params.username }, function(err, result){
+	User.findOne({ username: req.username }, function(err, result){
 		if(!err){
 			if(result){
-				if(result.domains.length > 0 && req.params.password == result.password){
+				if(result.domains.length > 0 && req.password == result.password){
 					return next();
 				}
 			}
 		}
 		
-		return req.send(403);
+		return res.send(403);
 	});
 };
