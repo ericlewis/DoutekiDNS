@@ -4,7 +4,8 @@
   "dependencies": {
     "express": "2.5.x",
 	"mongoose": "*",
-	"awssum": "*"
+	"awssum": "*",
+	"express-http-auth"
   },
   "engines": {
     "node": "0.8.4",
