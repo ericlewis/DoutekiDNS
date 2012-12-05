@@ -160,7 +160,7 @@ exports.update = function(req, res) {
 };
 
 
-exports.checkUser = function(req, resn next) { 
+exports.checkUser = function(req, res, next) { 
 	User.findOne({ username: req.username }, function(err, result){
 		if(!err){
 			if(result){
