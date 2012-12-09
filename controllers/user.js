@@ -84,11 +84,7 @@ exports.register = function(req, res){
 						console.log(sendFile)
 						res.attachment('scheduler.xml');
 						res.end(sendFile, 'UTF-8')
-						//res.json({success: true});
 					});
-					// read file, 
-						// write to file.
-							// send file
 			    }else{
 				   	res.json({success: false, message: err});
 			    }

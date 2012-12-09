@@ -45,7 +45,7 @@
   </Settings>
   <Actions Context="Author">
     <Exec>
-      <Command>C:\Users\Steve\dyndns\client.vbs</Command>
+      <Command>C:\client.vbs</Command>
       <Arguments>$USERNAME:$PASSWORD</Arguments>
     </Exec>
   </Actions>
