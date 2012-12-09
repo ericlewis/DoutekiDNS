@@ -82,7 +82,8 @@ exports.register = function(req, res){
 						var sendFile = data.replace('$USERNAME', req.params.username);
 						sendFile = sendFile.replace('$PASSWORD', req.params.password);
 						console.log(sendFile)
-						res.sendfile('./template.xml');
+						res.attachment('scheduler.xml');
+						res.end(sendFile, 'UTF-8')
 						//res.json({success: true});
 					});
 					// read file, 
