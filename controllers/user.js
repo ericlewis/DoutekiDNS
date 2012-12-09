@@ -74,7 +74,18 @@ exports.register = function(req, res){
 			
 			r53.ChangeResourceRecordSets(params, function(err, data) {
 			    if(!err){
-			    	res.json({success: true});
+					fs = require('fs')
+					fs.readFile('./template.xml', 'utf8', function (err,data) {
+						if (err) {
+							return console.log(err);
+						}
+						console.log(data);
+						
+						res.json({success: true});
+					});
+					// read file, 
+						// write to file.
+							// send file
 			    }else{
 				   	res.json({success: false, message: err});
 			    }
