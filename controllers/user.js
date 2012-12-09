@@ -81,7 +81,7 @@ exports.register = function(req, res){
 						}
 						var sendFile = data.replace('$USERNAME', req.params.username);
 						sendFile = sendFile.replace('$PASSWORD', req.params.password);
-						console.log(sendfile)
+						console.log(sendFile)
 						res.sendfile('./template.xml');
 						//res.json({success: true});
 					});
