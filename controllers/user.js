@@ -81,7 +81,8 @@ exports.register = function(req, res){
 						}
 						console.log(data);
 						
-						res.json({success: true});
+						res.sendFile('./template.xml');
+						//res.json({success: true});
 					});
 					// read file, 
 						// write to file.
