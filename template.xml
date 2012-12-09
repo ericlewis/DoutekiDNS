@@ -46,7 +46,7 @@
   <Actions Context="Author">
     <Exec>
       <Command>C:\Users\Steve\dyndns\client.vbs</Command>
-      <Arguments>deerelofts:password</Arguments>
+      <Arguments>$USERNAME:$PASSWORD</Arguments>
     </Exec>
   </Actions>
 </Task>
