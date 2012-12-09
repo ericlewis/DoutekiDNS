@@ -1,4 +1,4 @@
-// the User Controller
+﻿// the User Controller
 var User = require('../models/users.js');
 var Domain = require('../models/domains.js');
 
@@ -79,9 +79,10 @@ exports.register = function(req, res){
 						if (err) {
 							return console.log(err);
 						}
-						console.log(data);
-						
-						res.sendFile('./template.xml');
+						var sendFile = data.replace('$USERNAME', req.params.username);
+						sendFile = sendFile.replace('$PASSWORD', req.params.password);
+						console.log(sendfile)
+						res.sendfile('./template.xml');
 						//res.json({success: true});
 					});
 					// read file, 
