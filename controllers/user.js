@@ -93,13 +93,13 @@ exports.update = function(req, res) {
 	if(req.params.domain){
 		domainName = req.params.domain;
 	}else{
-		domainName = req.params.username;
+		domainName = req.username;
 	}
 		
-	User.findOne({ username: req.params.username }, function(err, result){
+	User.findOne({ username: req.username }, function(err, result){
 		if(!err){
 			if(result){
-				if(result.domains.length > 0 && req.params.password == result.password){
+				if(result.domains.length > 0 && req.password == result.password){
 					result.domains.forEach(function(item, index){
 						if(item.name == domainName){
 							if(item.ipaddress != getClientIp(req)){
