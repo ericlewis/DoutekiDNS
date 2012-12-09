@@ -151,7 +151,7 @@ exports.update = function(req, res) {
 				}		
 				
 			}else{
-				res.json({success: false, message: "no record found"});
+				res.json({success: false, message: "no record found for: "+req.params.username});
 			}
 		}else{
 			res.json({success: false, message: err});
