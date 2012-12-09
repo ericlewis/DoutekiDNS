@@ -65,8 +65,8 @@ exports.register = function(req, res){
 			        {
 			            Action          : 'CREATE',
 			            Name            : req.params.username+'.'+masterDomain,
-			            Type            : 'CNAME',
-			            Ttl             : '1',
+			            Type            : 'A',
+			            Ttl             : '60',
 			            ResourceRecords : [getClientIp(req)],
 			        },
 			     ]
@@ -110,15 +110,15 @@ exports.update = function(req, res) {
 								        {
 								            Action          : 'DELETE',
 								            Name            : domainName+'.'+masterDomain,
-								            Type            : 'CNAME',
-								            Ttl             : '1',
+								            Type            : 'A',
+								            Ttl             : '60',
 								            ResourceRecords : [item.ipaddress],
 								        },
 								        {
 								            Action          : 'CREATE',
 								            Name            : domainName+'.'+masterDomain,
-								            Type            : 'CNAME',
-								            Ttl             : '1',
+								            Type            : 'A',
+								            Ttl             : '60',
 								            ResourceRecords : [getClientIp(req)],
 								        },
 								     ]
