@@ -141,17 +141,17 @@ exports.update = function(req, res) {
 								    }
 								});		
 							}else{
-								res.json({success: false});
+								res.json({success: false, message: "No change in IP."});
 							}					
 						}
 					});
 												
 				}else{
-					res.json({success: false});
+					res.json({success: false, message: "Password doesn't match."});
 				}		
 				
 			}else{
-				res.json({success: false});
+				res.json({success: false, message: "no record found"});
 			}
 		}else{
 			res.json({success: false, message: err});
