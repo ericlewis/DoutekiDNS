@@ -9,7 +9,7 @@ echo end if >> c:\client.vbs
 echo Function AttemptUpdate( userpass ) >> c:\client.vbs
 echo     Dim objHTTP >> c:\client.vbs
 echo     Set objHTTP = CreateObject( "WinHttp.WinHttpRequest.5.1" ) >> c:\client.vbs
-echo     objHTTP.Open "GET", "http://douteki.herokuapp.com/api/v1/update/" ^& WScript.Arguments(1), False >> c:\client.vbs
+echo     objHTTP.Open "GET", "http://api.4maxdns.com/api/v1/update/" ^& WScript.Arguments(1), False >> c:\client.vbs
 echo   	 objHTTP.setRequestHeader "Authorization", "Basic " ^& Base64Encode( userpass ) >> c:\client.vbs
 echo     On Error Resume Next >> c:\client.vbs
 echo     objHTTP.Send >> c:\client.vbs
