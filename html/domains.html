@@ -33,7 +33,7 @@
 		} 
 		
 		function downloadTask(name) {
-			window.location = 'http://'+window.location.host+'/api/v1/domains/'+name.split('.')[0]+'/installer'
+			window.location = 'http://'+window.location.host+'/api/v1/domains/'+name.split('.')[0]+'/'+window.location.host+'/installer'
 		};
 		
 		function deleteDomain (id){

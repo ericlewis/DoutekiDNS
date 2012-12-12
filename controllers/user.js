@@ -51,6 +51,7 @@ exports.generateBatchFile = function(req, res) {
 		var sendFile = data.replace('$USERNAME', req.username);
 		sendFile = sendFile.replace('$PASSWORD', req.password);
 		sendFile = sendFile.replace('$NAME', req.params.domain);
+		sendFile = sendFile.replace('$HOST', req.params.host);
 
 		res.attachment('install_client.bat');
 		res.end(sendFile, 'UTF-8')
@@ -318,7 +319,7 @@ exports.addDomain = function(req, res) {
 				    if(!err){
 				    	res.json({success: true, message: "UPDATED_IP"});
 				    }else{
-				    	console.error(username, err);
+				    	console.error(req.username, err);
 					   	res.json({success: false, message: "DNS_ERROR"}, 500);
 				    }
 				});

@@ -40,7 +40,7 @@ app.get('/api/v1/update/:domain?', private, user.update);
 // get a list of the users domains
 app.get('/api/v1/domains', private, user.getDomains);
 
-app.get('/api/v1/domains/:domain/installer', private, user.generateBatchFile);
+app.get('/api/v1/domains/:domain/:host/installer', private, user.generateBatchFile);
 
 // delete a domain for a certain user
 app.get('/api/v1/domains/delete/:domain', private, user.deleteDomain);
