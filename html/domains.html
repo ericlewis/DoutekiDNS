@@ -13,7 +13,7 @@
 	<script type="text/javascript">
 	
 		function getDomains(){			
-			$.getJSON('/api/v1/domains', function(data) {
+			$.getJSON('/api/v1/domains?rand='+Math.random(), function(data) {
 			  var items = [];
 			
 			  $.each(data.domains, function(key, val) {
