@@ -3,7 +3,8 @@ var mongoose = require('mongoose')
    ,ObjectId = Schema.ObjectId;
 
 var domainSchema = new Schema({
-	name	  : String,
+	name	  : {type: String, index: { unique: true }},
+	owner	  : {type: String, default: ""},
     ipaddress : String,
     updated   : {type: Date, default: Date.now},
     created   : {type: Date, default: Date.now}

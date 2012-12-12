@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Register</title>
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://malsup.github.com/jquery.form.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $('#signupForm').ajaxForm({ 
+		        dataType:  'json',
+		        success:   function(data){
+		        	if(data.message == "INVALID_INPUT"){
+			        	alert("Username / Password is too short.");
+		        	}else if(data.message == "UPDATED_IP"){
+			        	window.location = "http://"+$('#username').val()+":"+$('#password').val()+"@"+window.location.host+"/domains";
+		        	}else if(data.message == "USER_EXISTS"){
+			        	alert("That username is taken.");
+		        	}
+		        }
+		    }); 
+		});
+	</script>
+</head>
+
+<body id="home">
+
+	<div style="width: 300px;margin: 0 auto;text-align:center;">
+		<h1>Registration</h1>
+
+		<form id="signupForm" action="/api/v1/register" method="post"> 
+	    	Username: <input type="text" name="username" id="username" /><br/> 
+	    	Password: <input type="password" name="password" id="password" /><br/><br> 
+	    	<input type="submit" value="Register" /> 
+	    </form>
+    </div>
+
+</body>
+</html>

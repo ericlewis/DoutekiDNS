@@ -1,4 +1,5 @@
 var http = require('http');
+var request = require('request');
 var api_url = null;
 
 if(process.argv.length < 6){
@@ -51,28 +52,26 @@ function registerUser(username, password){
 }
 
 function attemptUpdate(username, password){
-	var options = {
-		host: api_url,
-		path: '/api/v1/update/'+username+'/'+password
-	};
-	
-	var callback = function(response) {
-		var str = '';
-		
-		response.on('data', function (chunk) {
-			str += chunk;
-		});
-		
-		response.on('end', function () {
-			var result = JSON.parse(str);
+
+	var url = "http://" + username + ":" + password + "@"+api_url;
+
+	request(
+	    {
+	        url : url
+	    },
+	    function (error, response, body) {
+	        // Do more stuff with 'body' here
+	        console.log(body);
+	        var result = JSON.parse(body);
 
 			if(result.success == true){
 				console.log('IP Updated!');
+			}else{
+				console.log('No need to update!');
 			}
 			
 			setTimeout(attemptUpdate, 5000, username, password);
-		});
-	}
-	
-	http.request(options, callback).end();
+	    }
+	);
+
 };

@@ -22,9 +22,44 @@ var user = require('./controllers/user.js');
 
 var private = [realm, user.checkUser];
 
+// show the register page
+app.get('/register', user.registerStaticPage);
+
+// show the add domain page
+app.get('/domains', user.domainsStaticPage);
+
+// get your ip
 app.get('/api/v1/checkip', user.checkip);
-app.get('/api/v1/register/:username/:password/:domain?', user.register);
-app.get('/api/v1/update', private, user.update);
+
+// register the user
+app.post('/api/v1/register', user.register);
+
+// attempt update (default to username if no domain provided)
+app.get('/api/v1/update/:domain?', private, user.update);
+
+// get a list of the users domains
+app.get('/api/v1/domains', private, user.getDomains);
+
+app.get('/api/v1/domains/:domain/installer', private, user.generateBatchFile);
+
+// delete a domain for a certain user
+app.get('/api/v1/domains/delete/:domain', private, user.deleteDomain);
+
+// add domain for certain user
+app.post('/api/v1/domains', private, user.addDomain);
+
+// edit domain information manually
+app.post('/api/v1/domains/:domain', private, user.editDomain);
+
+// shift control of a domain
+app.update('/api/v1/domains/:domain', private, user.adoptDomain);
+
+
+// get hosted zones and names
+
+// delete hosted zone
+
+// add hosted zone
 
 app.listen(listen_port);
-console.log("4max DNS is listening on port: %d.", app.address().port);
+console.log("DoutekiDNS is listening on port: %d.", app.address().port);

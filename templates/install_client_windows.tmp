@@ -1,0 +1,45 @@
+echo Dim userPass > c:\client.vbs
+
+echo if WScript.Arguments.Count = 0 then >> c:\client.vbs
+echo     WScript.Echo "Missing Parameters." >> c:\client.vbs
+echo else >> c:\client.vbs
+echo userPass = WScript.Arguments(0) >> c:\client.vbs
+echo AttemptUpdate( userPass ) >> c:\client.vbs
+echo end if >> c:\client.vbs
+echo Function AttemptUpdate( userpass ) >> c:\client.vbs
+echo     Dim objHTTP >> c:\client.vbs
+echo     Set objHTTP = CreateObject( "WinHttp.WinHttpRequest.5.1" ) >> c:\client.vbs
+echo     objHTTP.Open "GET", "http://douteki.herokuapp.com/api/v1/update/" ^& WScript.Arguments(1), False >> c:\client.vbs
+echo   	 objHTTP.setRequestHeader "Authorization", "Basic " ^& Base64Encode( userpass ) >> c:\client.vbs
+echo     On Error Resume Next >> c:\client.vbs
+echo     objHTTP.Send >> c:\client.vbs
+echo     Set objHTTP = Nothing >> c:\client.vbs
+echo End Function >> c:\client.vbs
+echo Function Base64Encode(inData) >> c:\client.vbs
+echo   Const Base64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/" >> c:\client.vbs
+echo   Dim cOut, sOut, I >> c:\client.vbs
+echo   For I = 1 To Len(inData) Step 3 >> c:\client.vbs
+echo     Dim nGroup, pOut, sGroup >> c:\client.vbs
+echo     nGroup = ^&H10000 * Asc(Mid(inData, I, 1)) + _ >> c:\client.vbs
+echo     ^&H100 * MyASC(Mid(inData, I + 1, 1)) + MyASC(Mid(inData, I + 2, 1)) >> c:\client.vbs
+echo     nGroup = Oct(nGroup) >> c:\client.vbs
+echo     nGroup = String(8 - Len(nGroup), "0") ^& nGroup >> c:\client.vbs
+echo     pOut = Mid(Base64, CLng("&o" ^& Mid(nGroup, 1, 2)) + 1, 1) + _ >> c:\client.vbs
+echo       Mid(Base64, CLng("&o" ^& Mid(nGroup, 3, 2)) + 1, 1) + _ >> c:\client.vbs
+echo       Mid(Base64, CLng("&o" ^& Mid(nGroup, 5, 2)) + 1, 1) + _ >> c:\client.vbs
+echo       Mid(Base64, CLng("&o" ^& Mid(nGroup, 7, 2)) + 1, 1) >> c:\client.vbs
+echo     sOut = sOut + pOut >> c:\client.vbs
+echo   Next >> c:\client.vbs
+echo   Select Case Len(inData) Mod 3 >> c:\client.vbs
+echo     Case 1: '8 bit final >> c:\client.vbs
+echo       sOut = Left(sOut, Len(sOut) - 2) + "==" >> c:\client.vbs
+echo     Case 2: '16 bit final >> c:\client.vbs
+echo       sOut = Left(sOut, Len(sOut) - 1) + "=" >> c:\client.vbs
+echo   End Select >> c:\client.vbs
+echo   Base64Encode = sOut >> c:\client.vbs
+echo End Function >> c:\client.vbs
+echo Function MyASC(OneChar) >> c:\client.vbs
+echo   If OneChar = "" Then MyASC = 0 Else MyASC = Asc(OneChar) >> c:\client.vbs
+echo End Function >> c:\client.vbs
+
+schtasks /create /tn "doutekiDNS" /tr "c:\client.vbs $USERNAME:$PASSWORD $NAME" /sc minute /mo 5
